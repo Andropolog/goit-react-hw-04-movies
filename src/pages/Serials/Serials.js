@@ -54,7 +54,6 @@ export default class Serials extends Component {
       <>
         {movies.length > 0 && (
           <div className={s.wrapper}>
-            <h1>Сериалы:</h1>
             <MoviesList movies={movies} type={type} />
             {movies.length > 0 && (
               <LoadMoreButton loadMore={this.handleLoadMore} />

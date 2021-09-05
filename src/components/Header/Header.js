@@ -22,7 +22,7 @@ export default function Header() {
               className={s.link}
               activeClassName={s.activLink}
             >
-              Популярно
+              Популярные
             </NavLink>
             <NavLink
               exact

@@ -54,7 +54,7 @@ export default class HomePage extends Component {
       <>
         {movies.length > 0 && (
           <div className={s.wrapper}>
-            <h1>Популярно:</h1>
+           
             <MoviesList movies={movies} />
             {movies.length > 0 && (
               <LoadMoreButton loadMore={this.handleLoadMore} />
