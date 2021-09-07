@@ -27,7 +27,7 @@ export default class Cast extends Component {
 
   render() {
     const { casts } = this.state;
-    console.log(casts);
+    
     return (
       <div className={s.wrapper}>
         <ul className={s.castList}>

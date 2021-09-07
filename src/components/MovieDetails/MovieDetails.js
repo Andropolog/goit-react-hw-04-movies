@@ -3,24 +3,28 @@ import { NavLink, withRouter } from 'react-router-dom';
 import s from './MovieDetails.module.css';
 import plus0 from './0-plus-1-48.png';
 import plus18 from './18-plus-2-48.png';
-import paths from 'components/Routes/paths';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
 
 const MovieDetiles = ({ movie, match, history, location }) => {
-  const goBack = () => {
-    // if (location.state && location.state.from){
-    //   return history.push(location.state.from)}
-    // history.push(paths.HOME)
+  const [back, setBack] = useState()
+  const backDate = history.location.state
 
-    history.push(location?.state?.from || paths.HOME);
-  };
+  useEffect(() => {
+      backDate && setBack(backDate)
+  }, [backDate])
+
+  const GoBack = () => {
+      history.push(back?.from);
+  }
+     
   return (
     <div className={s.wrapper}>
       <h1 className={s.movieName}>
         {movie.title || movie.name} (
         {movie.original_title || movie.original_name})
       </h1>
-      <button className={s.goBack} type="button" onClick={goBack}>
+      <button className={s.goBack} type="button" onClick={GoBack}>
         Назад
       </button>
       <div
@@ -88,9 +92,7 @@ const MovieDetiles = ({ movie, match, history, location }) => {
               <NavLink
                 to={{
                   pathname: `${match.url}/casts`,
-                  state: {
-                    from: location,
-                  },
+                
                 }}
                 className={s.link}
                 activeClassName={s.activLink}
@@ -100,9 +102,7 @@ const MovieDetiles = ({ movie, match, history, location }) => {
               <NavLink
                 to={{
                   pathname: `${match.url}/reviews`,
-                  state: {
-                    from: location,
-                  },
+               
                 }}
                 className={s.link}
                 activeClassName={s.activLink}
